@@ -11,9 +11,15 @@
 		78CAB42F2A8F2F7400C555A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAB42E2A8F2F7400C555A1 /* ContentView.swift */; };
 		78CAB4312A8F2F7500C555A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78CAB4302A8F2F7500C555A1 /* Assets.xcassets */; };
 		78CAB4342A8F2F7500C555A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78CAB4332A8F2F7500C555A1 /* Preview Assets.xcassets */; };
-		78CAB43F2A8F2F7500C555A1 /* my_2048Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAB43E2A8F2F7500C555A1 /* my_2048Tests.swift */; };
-		78CAB4492A8F2F7500C555A1 /* my_2048UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAB4482A8F2F7500C555A1 /* my_2048UITests.swift */; };
-		78CAB44B2A8F2F7500C555A1 /* my_2048UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAB44A2A8F2F7500C555A1 /* my_2048UITestsLaunchTests.swift */; };
+		F78DC77E2A947A970095DCC1 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC77D2A947A970095DCC1 /* SwiftUIExtensions.swift */; };
+		F78DC7802A947AAD0095DCC1 /* FunctionalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC77F2A947AAD0095DCC1 /* FunctionalUtils.swift */; };
+		F78DC7822A947AF20095DCC1 /* BlockColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC7812A947AF20095DCC1 /* BlockColorScheme.swift */; };
+		F78DC7842A947CA70095DCC1 /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC7832A947CA70095DCC1 /* BlockView.swift */; };
+		F78DC7862A947CCD0095DCC1 /* BlockGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC7852A947CCD0095DCC1 /* BlockGridView.swift */; };
+		F78DC7882A947CDC0095DCC1 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC7872A947CDC0095DCC1 /* GameView.swift */; };
+		F78DC78A2A947CF40095DCC1 /* IdentifiedBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC7892A947CF40095DCC1 /* IdentifiedBlock.swift */; };
+		F78DC78D2A947D060095DCC1 /* BlockMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC78C2A947D060095DCC1 /* BlockMatrix.swift */; };
+		F78DC78F2A947D1A0095DCC1 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC78E2A947D1A0095DCC1 /* GameLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,10 +47,16 @@
 		78CAB4332A8F2F7500C555A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78CAB4352A8F2F7500C555A1 /* my_2048.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = my_2048.entitlements; sourceTree = "<group>"; };
 		78CAB43A2A8F2F7500C555A1 /* my-2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "my-2048Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78CAB43E2A8F2F7500C555A1 /* my_2048Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = my_2048Tests.swift; sourceTree = "<group>"; };
 		78CAB4442A8F2F7500C555A1 /* my-2048UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "my-2048UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78CAB4482A8F2F7500C555A1 /* my_2048UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = my_2048UITests.swift; sourceTree = "<group>"; };
-		78CAB44A2A8F2F7500C555A1 /* my_2048UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = my_2048UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F78DC77D2A947A970095DCC1 /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
+		F78DC77F2A947AAD0095DCC1 /* FunctionalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalUtils.swift; sourceTree = "<group>"; };
+		F78DC7812A947AF20095DCC1 /* BlockColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockColorScheme.swift; sourceTree = "<group>"; };
+		F78DC7832A947CA70095DCC1 /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
+		F78DC7852A947CCD0095DCC1 /* BlockGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockGridView.swift; sourceTree = "<group>"; };
+		F78DC7872A947CDC0095DCC1 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		F78DC7892A947CF40095DCC1 /* IdentifiedBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiedBlock.swift; sourceTree = "<group>"; };
+		F78DC78C2A947D060095DCC1 /* BlockMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMatrix.swift; sourceTree = "<group>"; };
+		F78DC78E2A947D1A0095DCC1 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				78CAB42B2A8F2F7400C555A1 /* my-2048 */,
-				78CAB43D2A8F2F7500C555A1 /* my-2048Tests */,
-				78CAB4472A8F2F7500C555A1 /* my-2048UITests */,
 				78CAB42A2A8F2F7400C555A1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +107,9 @@
 			children = (
 				78CAB42C2A8F2F7400C555A1 /* my_2048App.swift */,
 				78CAB42E2A8F2F7400C555A1 /* ContentView.swift */,
+				F78DC7792A9478BF0095DCC1 /* Utils */,
+				F78DC77B2A9478D50095DCC1 /* Views */,
+				F78DC77C2A9478E10095DCC1 /* Models */,
 				78CAB4302A8F2F7500C555A1 /* Assets.xcassets */,
 				78CAB4352A8F2F7500C555A1 /* my_2048.entitlements */,
 				78CAB4322A8F2F7500C555A1 /* Preview Content */,
@@ -112,21 +125,34 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		78CAB43D2A8F2F7500C555A1 /* my-2048Tests */ = {
+		F78DC7792A9478BF0095DCC1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				78CAB43E2A8F2F7500C555A1 /* my_2048Tests.swift */,
+				F78DC77D2A947A970095DCC1 /* SwiftUIExtensions.swift */,
+				F78DC77F2A947AAD0095DCC1 /* FunctionalUtils.swift */,
+				F78DC7812A947AF20095DCC1 /* BlockColorScheme.swift */,
 			);
-			path = "my-2048Tests";
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		78CAB4472A8F2F7500C555A1 /* my-2048UITests */ = {
+		F78DC77B2A9478D50095DCC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				78CAB4482A8F2F7500C555A1 /* my_2048UITests.swift */,
-				78CAB44A2A8F2F7500C555A1 /* my_2048UITestsLaunchTests.swift */,
+				F78DC7832A947CA70095DCC1 /* BlockView.swift */,
+				F78DC7852A947CCD0095DCC1 /* BlockGridView.swift */,
+				F78DC7872A947CDC0095DCC1 /* GameView.swift */,
 			);
-			path = "my-2048UITests";
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F78DC77C2A9478E10095DCC1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F78DC7892A947CF40095DCC1 /* IdentifiedBlock.swift */,
+				F78DC78C2A947D060095DCC1 /* BlockMatrix.swift */,
+				F78DC78E2A947D1A0095DCC1 /* GameLogic.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +285,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78DC7802A947AAD0095DCC1 /* FunctionalUtils.swift in Sources */,
+				F78DC78F2A947D1A0095DCC1 /* GameLogic.swift in Sources */,
+				F78DC77E2A947A970095DCC1 /* SwiftUIExtensions.swift in Sources */,
+				F78DC78D2A947D060095DCC1 /* BlockMatrix.swift in Sources */,
+				F78DC7822A947AF20095DCC1 /* BlockColorScheme.swift in Sources */,
+				F78DC7862A947CCD0095DCC1 /* BlockGridView.swift in Sources */,
+				F78DC78A2A947CF40095DCC1 /* IdentifiedBlock.swift in Sources */,
 				78CAB42F2A8F2F7400C555A1 /* ContentView.swift in Sources */,
+				F78DC7842A947CA70095DCC1 /* BlockView.swift in Sources */,
+				F78DC7882A947CDC0095DCC1 /* GameView.swift in Sources */,
 				78CAB42D2A8F2F7400C555A1 /* my_2048App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +303,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78CAB43F2A8F2F7500C555A1 /* my_2048Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78CAB44B2A8F2F7500C555A1 /* my_2048UITestsLaunchTests.swift in Sources */,
-				78CAB4492A8F2F7500C555A1 /* my_2048UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,8 +462,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "rmit.edu.vn.minh.my-2048";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -455,8 +491,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "rmit.edu.vn.minh.my-2048";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -11,6 +11,8 @@
 		78CAB42F2A8F2F7400C555A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAB42E2A8F2F7400C555A1 /* ContentView.swift */; };
 		78CAB4312A8F2F7500C555A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78CAB4302A8F2F7500C555A1 /* Assets.xcassets */; };
 		78CAB4342A8F2F7500C555A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78CAB4332A8F2F7500C555A1 /* Preview Assets.xcassets */; };
+		F785CB8F2A975F2D00DD6092 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB8E2A975F2D00DD6092 /* MenuView.swift */; };
+		F785CB912A979B8800DD6092 /* DifficultySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB902A979B8800DD6092 /* DifficultySelectionView.swift */; };
 		F78DC77E2A947A970095DCC1 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC77D2A947A970095DCC1 /* SwiftUIExtensions.swift */; };
 		F78DC7802A947AAD0095DCC1 /* FunctionalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC77F2A947AAD0095DCC1 /* FunctionalUtils.swift */; };
 		F78DC7822A947AF20095DCC1 /* BlockColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DC7812A947AF20095DCC1 /* BlockColorScheme.swift */; };
@@ -48,6 +50,8 @@
 		78CAB4352A8F2F7500C555A1 /* my_2048.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = my_2048.entitlements; sourceTree = "<group>"; };
 		78CAB43A2A8F2F7500C555A1 /* my-2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "my-2048Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAB4442A8F2F7500C555A1 /* my-2048UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "my-2048UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F785CB8E2A975F2D00DD6092 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		F785CB902A979B8800DD6092 /* DifficultySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultySelectionView.swift; sourceTree = "<group>"; };
 		F78DC77D2A947A970095DCC1 /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
 		F78DC77F2A947AAD0095DCC1 /* FunctionalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalUtils.swift; sourceTree = "<group>"; };
 		F78DC7812A947AF20095DCC1 /* BlockColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockColorScheme.swift; sourceTree = "<group>"; };
@@ -125,6 +129,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F785CB8C2A975EC500DD6092 /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				F78DC7832A947CA70095DCC1 /* BlockView.swift */,
+				F78DC7852A947CCD0095DCC1 /* BlockGridView.swift */,
+				F78DC7872A947CDC0095DCC1 /* GameView.swift */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
+		F785CB8D2A975F0B00DD6092 /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				F785CB8E2A975F2D00DD6092 /* MenuView.swift */,
+				F785CB902A979B8800DD6092 /* DifficultySelectionView.swift */,
+			);
+			path = MenuView;
+			sourceTree = "<group>";
+		};
 		F78DC7792A9478BF0095DCC1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,9 +161,8 @@
 		F78DC77B2A9478D50095DCC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F78DC7832A947CA70095DCC1 /* BlockView.swift */,
-				F78DC7852A947CCD0095DCC1 /* BlockGridView.swift */,
-				F78DC7872A947CDC0095DCC1 /* GameView.swift */,
+				F785CB8D2A975F0B00DD6092 /* MenuView */,
+				F785CB8C2A975EC500DD6092 /* GameView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,6 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F78DC7802A947AAD0095DCC1 /* FunctionalUtils.swift in Sources */,
+				F785CB912A979B8800DD6092 /* DifficultySelectionView.swift in Sources */,
+				F785CB8F2A975F2D00DD6092 /* MenuView.swift in Sources */,
 				F78DC78F2A947D1A0095DCC1 /* GameLogic.swift in Sources */,
 				F78DC77E2A947A970095DCC1 /* SwiftUIExtensions.swift in Sources */,
 				F78DC78D2A947D060095DCC1 /* BlockMatrix.swift in Sources */,

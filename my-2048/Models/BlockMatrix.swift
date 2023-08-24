@@ -32,9 +32,9 @@ struct BlockMatrix<T> : CustomDebugStringConvertible where T: Block {
     
     init() {
         matrix = [[T?]]()
-        for _ in 0..<4 {
+        for _ in 0..<6 {
             var row = [T?]()
-            for _ in 0..<4 {
+            for _ in 0..<6 {
                 row.append(nil)
             }
             matrix.append(row)

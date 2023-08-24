@@ -27,6 +27,9 @@ extension Edge {
 struct GameView : View {
     
     @State var ignoreGesture = false
+    
+    @State private var isGameOver = false
+    
     @EnvironmentObject var gameLogic: GameLogic
     
     fileprivate struct LayoutTraits {
@@ -44,8 +47,8 @@ struct GameView : View {
         
         return LayoutTraits(
             bannerOffset: landscape
-                ? .init(width: 32, height: 0)
-                : .init(width: 0, height: 32),
+            ? .init(width: 32, height: 0)
+            : .init(width: 0, height: 32),
             showsBanner: landscape ? proxy.size.width > 720 : proxy.size.height > 550,
             containerAlignment: landscape ? .leading : .top
         )
@@ -67,7 +70,7 @@ struct GameView : View {
                 guard !self.ignoreGesture else { return }
                 
                 guard abs(v.translation.width) > threshold ||
-                    abs(v.translation.height) > threshold else {
+                        abs(v.translation.height) > threshold else {
                     return
                 }
                 
@@ -87,6 +90,9 @@ struct GameView : View {
                         // Move up
                         self.gameLogic.move(.up)
                     }
+                    if !self.gameLogic.hasPossibleMoves() {
+                        self.isGameOver = true
+                    }
                 }
             }
             .onEnded { _ in
@@ -99,13 +105,18 @@ struct GameView : View {
         GeometryReader { proxy in
             bind(self.layoutTraits(for: proxy)) { layoutTraits in
                 ZStack(alignment: layoutTraits.containerAlignment) {
-                    if layoutTraits.showsBanner {
-                        Text("2048")
-                            .font(Font.system(size: 48).weight(.black))
-                            .foregroundColor(Color(red:0.47, green:0.43, blue:0.40, opacity:1.00))
-                            .offset(layoutTraits.bannerOffset)
+                    VStack{
+                        if layoutTraits.showsBanner {
+                            Text("2048")
+                                .font(Font.system(size: 48).weight(.black))
+                                .foregroundColor(Color(red:0.47, green:0.43, blue:0.40, opacity:1.00))
+                                .offset(layoutTraits.bannerOffset)
+                            
+                        }
+                        Text("Score: \(self.gameLogic.score)")
+                            .font(.title)
+                            .padding()
                     }
-                    
                     ZStack(alignment: .center) {
                         BlockGridView(matrix: self.gameLogic.blockMatrix,
                                       blockEnterEdge: .from(self.gameLogic.lastGestureDirection))
@@ -122,12 +133,25 @@ struct GameView : View {
         }
     }
     
-    var body: AnyView {
-        return gestureEnabled ? (
-            content
-                .gesture(gesture, including: .all)>*
-        ) : content>*
+    var body: some View {
+        if gestureEnabled {
+            return AnyView(
+                content
+                    .gesture(gesture, including: .all)
+                    .alert(isPresented: $isGameOver) {
+                        Alert(title: Text("Game Over"), message: Text("No possible moves left!"), dismissButton: .default(Text("New Game")) {
+                            gameLogic.newGame()
+                            isGameOver = false
+                            self.gameLogic.score = 0
+                            
+                        })
+                    }
+            )
+        } else {
+            return AnyView(content)
+        }
     }
+    
     
 }
 

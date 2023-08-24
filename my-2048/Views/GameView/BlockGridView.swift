@@ -69,7 +69,7 @@ struct BlockGridView : View {
     let blockDimension: CGFloat = 65
         let gap: CGFloat = 12
     var gridWidth: CGFloat {
-        return CGFloat(4) * (blockDimension + gap) + gap
+        return CGFloat(6) * (blockDimension + gap) + gap
     }
     var gridHeight: CGFloat {
         return gridWidth // Since it's a square
@@ -101,8 +101,8 @@ struct BlockGridView : View {
     var body: some View {
         ZStack {
             // Background grid blocks:
-            ForEach(0..<4) { x in
-                ForEach(0..<4) { y in
+            ForEach(0..<6) { x in
+                ForEach(0..<6) { y in
                     self.generateBlock(nil, at: (x, y))
                 }
             }

@@ -10,6 +10,17 @@ import SwiftUI
 import Combine
 
 final class GameLogic : ObservableObject {
+    @Published var score: Int = 0
+
+    @Published var currentLevel: Int = 1
+    var boardSize: Int {
+        switch currentLevel {
+        case 1: return 4
+        case 2: return 5
+        case 3: return 6
+        default: return 4
+        }
+    }
     
     enum Direction {
         case left
@@ -61,10 +72,10 @@ final class GameLogic : ObservableObject {
         var moved = false
         
         let axis = direction == .left || direction == .right
-        for row in 0..<4 {
+        for row in 0..<6 {
             var rowSnapshot = [IdentifiedBlock?]()
             var compactRow = [IdentifiedBlock]()
-            for col in 0..<4 {
+            for col in 0..<6 {
                 // Transpose if necessary.
                 if let block = _blockMatrix[axis ? (col, row) : (row, col)] {
                     rowSnapshot.append(block)
@@ -77,8 +88,8 @@ final class GameLogic : ObservableObject {
             
             var newRow = [IdentifiedBlock?]()
             compactRow.forEach { newRow.append($0) }
-            if compactRow.count < 4 {
-                for _ in 0..<(4 - compactRow.count) {
+            if compactRow.count < 6 {
+                for _ in 0..<(6 - compactRow.count) {
                     if direction == .left || direction == .up {
                         newRow.append(nil)
                     } else {
@@ -112,6 +123,9 @@ final class GameLogic : ObservableObject {
                     var accPrefix = Array(acc.dropLast())
                     var mergedBlock = item.1
                     mergedBlock.number *= 2
+                    //Scoring system
+                    score += mergedBlock.number
+                    
                     accPrefix.append((true, mergedBlock))
                     return accPrefix
                 } else {
@@ -125,12 +139,13 @@ final class GameLogic : ObservableObject {
         if reverse {
             blocks = blocks.reversed()
         }
+        
     }
     
     @discardableResult fileprivate func generateNewBlocks() -> Bool {
         var blankLocations = [BlockMatrixType.Index]()
-        for rowIndex in 0..<4 {
-            for colIndex in 0..<4 {
+        for rowIndex in 0..<6 {
+            for colIndex in 0..<6 {
                 let index = (colIndex, rowIndex)
                 if _blockMatrix[index] == nil {
                     blankLocations.append(index)
@@ -138,7 +153,8 @@ final class GameLogic : ObservableObject {
             }
         }
         
-        guard blankLocations.count >= 2 else {
+        // If no blank locations, return false
+        guard !blankLocations.isEmpty else {
             return false
         }
         
@@ -151,6 +167,11 @@ final class GameLogic : ObservableObject {
         var placeLocIndex = Int.random(in: 0..<blankLocations.count)
         _blockMatrix.place(IdentifiedBlock(id: newGlobalID, number: 2), to: blankLocations[placeLocIndex])
         
+        // If only one blank location, return true after placing the first block
+        if blankLocations.count == 1 {
+            return true
+        }
+        
         // Place the second block.
         guard let lastLoc = blankLocations.last else {
             return false
@@ -161,6 +182,7 @@ final class GameLogic : ObservableObject {
         
         return true
     }
+
     
 //    fileprivate func forEachBlockIndices(mode: ForEachMode = .rowByRow,
 //                                         reversed: Bool = false,
@@ -180,6 +202,36 @@ final class GameLogic : ObservableObject {
 //            }
 //        }
 //    }
+
+  
     
+    func hasPossibleMoves() -> Bool {
+        // Check for empty blocks
+        for rowIndex in 0..<6 {
+            for colIndex in 0..<6 {
+                let index = (colIndex, rowIndex)
+                if _blockMatrix[index] == nil {
+                    return true
+                }
+            }
+        }
+        
+        // Check for possible merges
+        for rowIndex in 0..<6 {
+            for colIndex in 0..<6 {
+                let currentBlock = _blockMatrix[(colIndex, rowIndex)]
+                let rightBlock = colIndex < 3 ? _blockMatrix[(colIndex + 1, rowIndex)] : nil
+                let downBlock = rowIndex < 3 ? _blockMatrix[(colIndex, rowIndex + 1)] : nil
+                
+                if (rightBlock != nil && rightBlock!.number == currentBlock!.number) ||
+                   (downBlock != nil && downBlock!.number == currentBlock!.number) {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+
 }
 

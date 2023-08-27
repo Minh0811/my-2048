@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DifficultySelectionView: View {
     @EnvironmentObject var gameLogic: GameLogic
+    //@Binding var currentLevel: Int
     @State private var refreshView: Bool = false
     
     var body: some View {
@@ -17,11 +18,16 @@ struct DifficultySelectionView: View {
             Text("Select Difficulty")
                 .font(.largeTitle)
                 .padding()
-            Text("Current Level: \(gameLogic.boardSize)")
+            Text("Current Level: \(gameLogic.currentLevel)")
                       .font(.title2)
                       .padding()
             Button(action: {
+                print("Easy button pressed")
                 gameLogic.setLevelValue(level: 1)
+                //gameLogic.currentLevel = 1
+                print(gameLogic.currentLevel)
+                refreshView.toggle()
+                gameLogic.newGame()
             }) {
                 Text("Easy (6x6)")
                     .font(.title)
@@ -32,9 +38,10 @@ struct DifficultySelectionView: View {
  
             }
 
-            Button(action: {
+            Button(action: { print("Medium button pressed")
                 gameLogic.setLevelValue(level: 2)
                 refreshView.toggle()
+                gameLogic.newGame()
             }) {
                 Text("Medium (5x5)")
                     .font(.title)
@@ -46,6 +53,7 @@ struct DifficultySelectionView: View {
 
             Button(action: {
                 gameLogic.setLevelValue(level: 3)
+                gameLogic.newGame()
             }) {
                 Text("Hard (4x4)")
                     .font(.title)

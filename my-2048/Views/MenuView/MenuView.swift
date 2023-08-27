@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MenuView: View {
+    @EnvironmentObject var gameLogic: GameLogic
     var body: some View {
         NavigationView {
             
@@ -30,25 +31,28 @@ struct MenuView: View {
 //                }
                 
                 NavigationLink(
-                    destination: GameView(),
+                    destination: GameView().environmentObject(GameLogic()),
                     label: {
                         Text("Game")
                             .font(.title)
                             .padding()
                             .background(Color.green)
                             .foregroundColor(.white)
-                            .cornerRadius(10)                    }
+                            .cornerRadius(10)
+                        
+                    }
                 )
-                Button(action: {
-                    
-                }) {
-                    Text("Choose dificult")
-                        .font(.title)
-                        .padding()
-                        .background(Color.orange)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
+                
+                NavigationLink(
+                    destination: DifficultySelectionView() .environmentObject(GameLogic()),
+                    label: {
+                        Text("Choose dificult")
+                            .font(.title)
+                            .padding()
+                            .background(Color.orange)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)              }
+                )
                 
                 Button(action: {
                     
@@ -70,5 +74,6 @@ struct MenuView: View {
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()
+            .environmentObject(GameLogic())
     }
 }

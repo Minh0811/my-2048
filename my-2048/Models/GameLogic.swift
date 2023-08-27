@@ -12,7 +12,8 @@ import Combine
 final class GameLogic : ObservableObject {
     @Published var score: Int = 0
 
-    @Published var currentLevel: Int = 2
+    @Published public var currentLevel: Int = 0
+
     var boardSize: Int {
         switch currentLevel {
         case 1: return 4
@@ -54,7 +55,6 @@ final class GameLogic : ObservableObject {
         _blockMatrix = BlockMatrixType()
         resetLastGestureDirection()
         generateNewBlocks()
-        
         objectWillChange.send(self)
     }
     
@@ -205,6 +205,7 @@ final class GameLogic : ObservableObject {
 
     func setLevelValue(level: Int) {
         currentLevel = level
+        objectWillChange.send(self)
     }
 
     

@@ -12,7 +12,7 @@ import Combine
 final class GameLogic : ObservableObject {
     @Published var score: Int = 0
 
-    @Published var currentLevel: Int = 1
+    @Published var currentLevel: Int = 2
     var boardSize: Int {
         switch currentLevel {
         case 1: return 4
@@ -72,10 +72,10 @@ final class GameLogic : ObservableObject {
         var moved = false
         
         let axis = direction == .left || direction == .right
-        for row in 0..<6 {
+        for row in 0..<boardSize {
             var rowSnapshot = [IdentifiedBlock?]()
             var compactRow = [IdentifiedBlock]()
-            for col in 0..<6 {
+            for col in 0..<boardSize {
                 // Transpose if necessary.
                 if let block = _blockMatrix[axis ? (col, row) : (row, col)] {
                     rowSnapshot.append(block)
@@ -88,8 +88,8 @@ final class GameLogic : ObservableObject {
             
             var newRow = [IdentifiedBlock?]()
             compactRow.forEach { newRow.append($0) }
-            if compactRow.count < 6 {
-                for _ in 0..<(6 - compactRow.count) {
+            if compactRow.count < boardSize {
+                for _ in 0..<(boardSize - compactRow.count) {
                     if direction == .left || direction == .up {
                         newRow.append(nil)
                     } else {
@@ -144,8 +144,8 @@ final class GameLogic : ObservableObject {
     
     @discardableResult fileprivate func generateNewBlocks() -> Bool {
         var blankLocations = [BlockMatrixType.Index]()
-        for rowIndex in 0..<6 {
-            for colIndex in 0..<6 {
+        for rowIndex in 0..<boardSize {
+            for colIndex in 0..<boardSize {
                 let index = (colIndex, rowIndex)
                 if _blockMatrix[index] == nil {
                     blankLocations.append(index)
@@ -203,12 +203,15 @@ final class GameLogic : ObservableObject {
 //        }
 //    }
 
-  
+    func setLevelValue(level: Int) {
+        currentLevel = level
+    }
+
     
     func hasPossibleMoves() -> Bool {
         // Check for empty blocks
-        for rowIndex in 0..<6 {
-            for colIndex in 0..<6 {
+        for rowIndex in 0..<boardSize {
+            for colIndex in 0..<boardSize {
                 let index = (colIndex, rowIndex)
                 if _blockMatrix[index] == nil {
                     return true
@@ -217,8 +220,8 @@ final class GameLogic : ObservableObject {
         }
         
         // Check for possible merges
-        for rowIndex in 0..<6 {
-            for colIndex in 0..<6 {
+        for rowIndex in 0..<boardSize {
+            for colIndex in 0..<boardSize {
                 let currentBlock = _blockMatrix[(colIndex, rowIndex)]
                 let rightBlock = colIndex < 3 ? _blockMatrix[(colIndex + 1, rowIndex)] : nil
                 let downBlock = rowIndex < 3 ? _blockMatrix[(colIndex, rowIndex + 1)] : nil

@@ -59,6 +59,7 @@ extension AnyTransition {
 }
 
 struct BlockGridView : View {
+    @EnvironmentObject var gameLogic: GameLogic
     
     typealias MatrixType = BlockMatrix<IdentifiedBlock>
     
@@ -66,14 +67,50 @@ struct BlockGridView : View {
     let blockEnterEdge: Edge
     
     // New values for the grid's frame
-    let blockDimension: CGFloat = 65
-        let gap: CGFloat = 12
-    var gridWidth: CGFloat {
-        return CGFloat(6) * (blockDimension + gap) + gap
-    }
-    var gridHeight: CGFloat {
-        return gridWidth // Since it's a square
-    }
+    var currentLevel: Int {
+            return gameLogic.currentLevel
+        }
+    
+    var blockSettings: (dimension: CGFloat, gap: CGFloat) {
+            switch currentLevel {
+                //4x4
+            case 1:
+                return (60, 12)
+                //5x5
+            case 2:
+                return (55, 12)
+                //6x6
+            case 3:
+                return (50, 7)
+            default:
+                return (40, 12)  // Default values
+            }
+        }
+        
+        var blockDimension: CGFloat {
+            return blockSettings.dimension
+        }
+        
+        var gap: CGFloat {
+            return blockSettings.gap
+        }
+        
+        var gridWidth: CGFloat {
+            return CGFloat(gameLogic.boardSize) * (blockDimension + gap) + gap
+        }
+        
+        var gridHeight: CGFloat {
+            return gridWidth // Since it's a square
+        }
+    
+//    let blockDimension: CGFloat = 40
+//    let gap: CGFloat = 12
+//    var gridWidth: CGFloat {
+//        return CGFloat(gameLogic.boardSize) * (blockDimension + gap) + gap
+//    }
+//    var gridHeight: CGFloat {
+//        return gridWidth // Since it's a square
+//    }
     
     func generateBlock(_ block: IdentifiedBlock?,
                      at index: (Int, Int)) -> some View {
@@ -101,8 +138,8 @@ struct BlockGridView : View {
     var body: some View {
         ZStack {
             // Background grid blocks:
-            ForEach(0..<6) { x in
-                ForEach(0..<6) { y in
+            ForEach(0..<gameLogic.boardSize) { x in
+                ForEach(0..<gameLogic.boardSize) { y in
                     self.generateBlock(nil, at: (x, y))
                 }
             }
@@ -145,6 +182,7 @@ struct BlockGridView_Previews : PreviewProvider {
     
     static var previews: some View {
         BlockGridView(matrix: matrix, blockEnterEdge: .top)
+            .environmentObject(GameLogic())
             .previewLayout(.sizeThatFits)
     }
     

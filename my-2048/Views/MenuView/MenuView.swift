@@ -17,18 +17,26 @@ struct MenuView: View {
                     .font(.largeTitle)
                     .padding()
                 
-//                Button(action: {
-//                    
-//                    GameView()
-//                    
-//                }) {
-//                    Text("Game")
-//                        .font(.title)
-//                        .padding()
-//                        .background(Color.green)
-//                        .foregroundColor(.white)
-//                        .cornerRadius(10)
-//                }
+                //                Button(action: {
+                //
+                //                    GameView()
+                //                        .environmentObject(GameLogic())
+                //                    print("#1 game button pressed")
+                //
+                //                }) {
+                //                    Text("Game")
+                //                        .font(.title)
+                //                        .padding()
+                //                        .background(Color.green)
+                //                        .foregroundColor(.white)
+                //                        .cornerRadius(10)
+                //                }.onTapGesture {
+                //                    gameLogic.newGame()
+                //                }
+                
+                
+                
+                
                 
                 NavigationLink(
                     destination: GameView().environmentObject(GameLogic()),
@@ -41,7 +49,12 @@ struct MenuView: View {
                             .cornerRadius(10)
                         
                     }
-                )
+                ).onTapGesture {
+                    gameLogic.newGame()
+                }
+                .onDisappear {
+                    gameLogic.newGame()
+                }
                 
                 NavigationLink(
                     destination: DifficultySelectionView() .environmentObject(GameLogic()),
@@ -51,7 +64,7 @@ struct MenuView: View {
                             .padding()
                             .background(Color.orange)
                             .foregroundColor(.white)
-                            .cornerRadius(10)              }
+                        .cornerRadius(10)              }
                 )
                 
                 Button(action: {

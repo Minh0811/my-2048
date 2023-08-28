@@ -8,10 +8,34 @@
 
 import SwiftUI
 
+//struct ParentView: View {
+//    @State private var gameLogic = GameLogic()
+//    @State private var showGame = false
+//    @State private var uniqueID = UUID()
+//    var body: some View {
+//        VStack {
+//            if showGame {
+//                GameView()
+//                    .environmentObject(gameLogic)
+//            } else {
+//                DifficultySelectionView(reinitializeGameLogic: {
+//                    self.gameLogic = GameLogic()
+//                    self.uniqueID = UUID()
+//                    self.showGame = true
+//                })
+//                .environmentObject(gameLogic)
+//            }
+//        }
+//    }
+//}
+
 struct DifficultySelectionView: View {
     @EnvironmentObject var gameLogic: GameLogic
+   // var reinitializeGameLogic: () -> Void
     //@Binding var currentLevel: Int
     @State private var refreshView: Bool = false
+  //  @State var DifficultyLevel = 3
+   // @Binding var currentLevel: Int
     
     var body: some View {
         VStack(spacing: 20) {
@@ -25,9 +49,12 @@ struct DifficultySelectionView: View {
                 print("Easy button pressed")
                 gameLogic.setLevelValue(level: 1)
                 //gameLogic.currentLevel = 1
-                print(gameLogic.currentLevel)
-                refreshView.toggle()
+                print("Ez: \(gameLogic.currentLevel)")
+                //refreshView.toggle()
+        //        reinitializeGameLogic()
                 gameLogic.newGame()
+         
+           
             }) {
                 Text("Easy (6x6)")
                     .font(.title)
@@ -38,9 +65,12 @@ struct DifficultySelectionView: View {
  
             }
 
-            Button(action: { print("Medium button pressed")
+            Button(action: {
+                print("Medium button pressed")
                 gameLogic.setLevelValue(level: 2)
-                refreshView.toggle()
+                print("Medium: \(gameLogic.currentLevel)")
+               // refreshView.toggle()
+          //      reinitializeGameLogic()
                 gameLogic.newGame()
             }) {
                 Text("Medium (5x5)")
@@ -52,7 +82,10 @@ struct DifficultySelectionView: View {
             }
 
             Button(action: {
+                print("Hard button pressed")
                 gameLogic.setLevelValue(level: 3)
+                print("Hard: \(gameLogic.currentLevel)")
+        //        reinitializeGameLogic()
                 gameLogic.newGame()
             }) {
                 Text("Hard (4x4)")
@@ -69,8 +102,12 @@ struct DifficultySelectionView: View {
 }
 
 struct DifficultySelectionView_Previews: PreviewProvider {
+    @State static var dummyCurrentLevel: Int = 1
+        static var dummyGameLogic = GameLogic()
+
     static var previews: some View {
-        DifficultySelectionView()
-            .environmentObject(GameLogic())
-    }
+           DifficultySelectionView() // Provide an empty closure for the preview
+               .environmentObject(GameLogic())
+        
+       }
 }

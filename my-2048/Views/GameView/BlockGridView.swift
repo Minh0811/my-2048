@@ -166,9 +166,10 @@ struct BlockGridView : View {
 
 #if DEBUG
 struct BlockGridView_Previews : PreviewProvider {
+    static var gameLogic = GameLogic()
     
     static var matrix: BlockGridView.MatrixType {
-        var _matrix = BlockGridView.MatrixType()
+        var _matrix = BlockGridView.MatrixType(size: gameLogic.boardSize)
         _matrix.place(IdentifiedBlock(id: 1, number: 2), to: (2, 0))
         _matrix.place(IdentifiedBlock(id: 2, number: 2), to: (3, 0))
         _matrix.place(IdentifiedBlock(id: 3, number: 8), to: (1, 1))

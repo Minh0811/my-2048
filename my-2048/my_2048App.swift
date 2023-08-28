@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct my_2048App: App {
+    // Initialize the GameLogic object once
+    let gameLogic = GameLogic()
+    
     var body: some Scene {
         WindowGroup {
-            MenuView()
+            // Pass the gameLogic instance as an environment object to MenuView
+            MenuView().environmentObject(gameLogic)
         }
     }
 }

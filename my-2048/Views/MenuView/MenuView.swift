@@ -39,7 +39,7 @@ struct MenuView: View {
                 
                 
                 NavigationLink(
-                    destination: GameView().environmentObject(GameLogic()),
+                    destination: GameView().environmentObject(gameLogic),
                     label: {
                         Text("Game")
                             .font(.title)
@@ -52,20 +52,22 @@ struct MenuView: View {
                 ).onTapGesture {
                     gameLogic.newGame()
                 }
-                .onDisappear {
-                    gameLogic.newGame()
-                }
-                
+//                .onDisappear {
+//                    gameLogic.newGame()
+//                }
+
                 NavigationLink(
-                    destination: DifficultySelectionView() .environmentObject(GameLogic()),
+                    destination: DifficultySelectionView().environmentObject(gameLogic), // Use the same gameLogic instance
                     label: {
                         Text("Choose dificult")
                             .font(.title)
                             .padding()
                             .background(Color.orange)
                             .foregroundColor(.white)
-                        .cornerRadius(10)              }
+                            .cornerRadius(10)
+                    }
                 )
+
                 
                 Button(action: {
                     

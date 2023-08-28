@@ -116,6 +116,9 @@ struct GameView : View {
                         Text("Score: \(self.gameLogic.score)")
                             .font(.title)
                             .padding()
+                        Text("Current Level: \(gameLogic.currentLevel)")
+                                  .font(.title2)
+                                  .padding()
                     }
                     ZStack(alignment: .center) {
                         BlockGridView(matrix: self.gameLogic.blockMatrix,

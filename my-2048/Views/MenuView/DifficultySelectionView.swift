@@ -47,7 +47,7 @@ struct DifficultySelectionView: View {
                       .padding()
             Button(action: {
                 print("Easy button pressed")
-                gameLogic.setLevelValue(level: 1)
+                gameLogic.setLevelValue(level: 3)
                 //gameLogic.currentLevel = 1
                 print("Ez: \(gameLogic.currentLevel)")
                 //refreshView.toggle()
@@ -83,7 +83,7 @@ struct DifficultySelectionView: View {
 
             Button(action: {
                 print("Hard button pressed")
-                gameLogic.setLevelValue(level: 3)
+                gameLogic.setLevelValue(level: 1)
                 print("Hard: \(gameLogic.currentLevel)")
         //        reinitializeGameLogic()
                 gameLogic.newGame()

@@ -27,19 +27,19 @@ struct IndexedBlock<T> where T: Block {
 struct BlockMatrix<T> : CustomDebugStringConvertible where T: Block {
     
     typealias Index = (Int, Int)
-    
-    fileprivate var matrix: [[T?]]
-    
-    init() {
-        matrix = [[T?]]()
-        for _ in 0..<6 {
-            var row = [T?]()
-            for _ in 0..<6 {
-                row.append(nil)
-            }
-            matrix.append(row)
-        }
-    }
+       
+       fileprivate var matrix: [[T?]]
+       
+       init(size: Int) {
+           matrix = [[T?]]()
+           for _ in 0..<size {
+               var row = [T?]()
+               for _ in 0..<size {
+                   row.append(nil)
+               }
+               matrix.append(row)
+           }
+       }
     
     var debugDescription: String {
         matrix.map { row -> String in

@@ -53,7 +53,7 @@ final class GameLogic : ObservableObject {
     }
     
     func newGame() {
-        _blockMatrix = BlockMatrixType()
+        _blockMatrix = BlockMatrixType(size: boardSize)
         resetLastGestureDirection()
         generateNewBlocks()
         objectWillChange.send(self)
